@@ -558,7 +558,7 @@ void main(int argc, char** argv) {
     }
     //output
     float* dall = (float*)mkl_malloc( (hid * input_dim * 4 + hid * hid * 4 + hid * 4 + time_step * input_dim * batch_size) * sizeof (float), 64);
-    memset(dall, 0, sizeof(float) * hid * input_dim * 4 + hid * hid * 4 + hid * 4 + time_step * input_dim * batch_size);
+    memset(dall, 0, sizeof(float) * (hid * input_dim * 4 + hid * hid * 4 + hid * 4 + time_step * input_dim * batch_size));
 
     //share from forward
     float* hf = (float*)mkl_malloc(time_step * batch_size * hid * sizeof (float), 64);
@@ -659,9 +659,10 @@ void main(int argc, char** argv) {
     mkl_free(w_x);
     mkl_free(w_h);
     mkl_free(x);
+    mkl_free(b);
     mkl_free(h_0);
     mkl_free(c_0);
-    mkl_free(b);
+    mkl_free(grad_last);
 
     mkl_free(hf);
     mkl_free(hi);
