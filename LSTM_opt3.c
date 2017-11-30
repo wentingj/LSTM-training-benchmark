@@ -516,7 +516,7 @@ void main(int argc, char** argv) {
     const float** A = (const float**)mkl_malloc(4 * time_step * sizeof (float*), 64);
     const float** B = (const float**)mkl_malloc(4 * time_step * sizeof (float*), 64);
     float** C = (float**)mkl_malloc(4 * time_step * sizeof (float*), 64);
-    float* x_temp = (float*)mkl_malloc(time_step * 4 * batch_size * hid * sizeof (float), 64);
+    float* x_temp = (float*)mkl_malloc(time_step * 16 * batch_size * hid * sizeof (float), 64);
     //global backward
     
     float* w_x;
